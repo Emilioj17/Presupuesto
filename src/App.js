@@ -28,7 +28,11 @@ function App() {
                 listaItems={listaItems}
                 setListaItems={setListaItems}
               />
-              <Lista/>
+              <Lista
+                presupuesto={presupuesto}
+                listaItems={listaItems}
+                setListaItems={setListaItems}
+              />
             </div>
           )
         }

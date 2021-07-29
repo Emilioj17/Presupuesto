@@ -38,3 +38,22 @@
 .Derecha {
 	grid-area: Derecha;
 }
+
+.Lista {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: auto 1fr;
+	grid-template-areas:
+		"ControlPresupuesto ControlPresupuesto"
+		"CentralGasto CentralGasto";
+}
+
+.ControlPresupuesto {
+	grid-area: ControlPresupuesto;
+}
+
+.CentralGasto {
+	grid-area: CentralGasto;
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+}
