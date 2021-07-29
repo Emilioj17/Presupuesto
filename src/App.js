@@ -7,6 +7,9 @@ import Lista from './components/Lista';
 function App() {
   const [inicio, setInicio] = useState(true);
   const [presupuesto, setPresupuesto] = useState(0);
+  const [nombreGasto, setNombreGasto] = useState("");
+  const [qPresupuesto, setQPresupuesto] = useState("");
+  const [listaItems, setListaItems] = useState([]);
 
   return (
     <div className="App">
@@ -14,10 +17,17 @@ function App() {
       <div className="Cuerpo">
         {inicio ?
           (
-            <Inicio setInicio={setInicio} setPresupuesto={setPresupuesto}/>
+            <Inicio presupuesto={presupuesto} setInicio={setInicio} setPresupuesto={setPresupuesto}/>
           ) : (
             <div className="Cuerpo2">
-              <Formulario />
+              <Formulario
+                nombreGasto={nombreGasto}
+                setNombreGasto={setNombreGasto}
+                qPresupuesto={qPresupuesto}
+                setQPresupuesto={setQPresupuesto}
+                listaItems={listaItems}
+                setListaItems={setListaItems}
+              />
               <Lista/>
             </div>
           )

@@ -1,20 +1,19 @@
 import React, { Fragment, useState } from 'react';
 import Error from './Error';
 
-const Formulario = () => {
+const Formulario = ({nombreGasto, setNombreGasto, qPresupuesto, setQPresupuesto, listaItems, setListaItems }) => {
     const [error, setError] = useState(false);
-    const [nombreGasto, setNombreGasto] = useState("");
-    const [qPresupuesto, setQPresupuesto] = useState("");
+    
 
     const handlerNombreGasto = (e) => {
         const palabra = e.target.value;
         if (palabra.trim() === "") {
             setError(true);
             return;
-        } else if (Number.isInteger(palabra)) {
+        } else if (Number.isInteger(parseInt(palabra))) {
             setError(true);
             return;
-        }else {
+        } else {
             setError(false);
             setNombreGasto(palabra);
         }
@@ -23,8 +22,9 @@ const Formulario = () => {
 
     const handlerQPresupuesto = (e) => {
         const numero = parseInt(e.target.value);
-        if (numero<1) {
+        if (numero<1 || isNaN(numero)) {
             setError(true);
+            return;
         } else {
             setError(false);
             setQPresupuesto(numero);
@@ -32,16 +32,26 @@ const Formulario = () => {
         
     }
 
-    const handlerIngresar = () => {
-        
+    const handlerIngresar = (e) => {
+        e.preventDefault();
+        if (nombreGasto && qPresupuesto) {
+            setListaItems([...listaItems, { "nombreGasto": nombreGasto, "cantidad": qPresupuesto }]);
+            setQPresupuesto("");
+            setNombreGasto("");
+        } else {
+            setError(true);
+            return;
+        }
+            
     }
+
     return (
         <Fragment>
-            <Error error={error} setError={setError} texto="Debes Ingresar un Presupuesto Positivo y un nombre al Gasto"/>
             <form>
+                <Error error={error} setError={setError} texto="Debes Ingresar un Presupuesto Positivo y un nombre al Gasto"/>
                 <label htmlFor="nombreGasto">Nombre de Gasto</label>
                 <input
-                    type="number"
+                    type="text"
                     name="nombreGasto"
                     id=""
                     placeholder="Nombre de Gasto"
@@ -57,7 +67,7 @@ const Formulario = () => {
                     value={qPresupuesto}
                     onChange={(e)=>handlerQPresupuesto(e)}
                 />
-                <button className="alert button expanded" onClick={()=>handlerIngresar()}>Ingresar</button>
+                <button className="alert button expanded" onClick={(e)=>handlerIngresar(e)}>Ingresar</button>
             </form>
         </Fragment>
     )

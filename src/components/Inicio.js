@@ -1,20 +1,27 @@
 import React, { Fragment, useState } from 'react';
 import Error from './Error';
 
-const Inicio = ({ setInicio, setPresupuesto }) => {
+const Inicio = ({ presupuesto, setInicio, setPresupuesto }) => {
     const [error, setError] = useState(false);
-    const handlerInicio = () => {
-        setInicio(false);
+    const handlerInicio = (e) => {
+        e.preventDefault();
+        if (presupuesto > 10) {
+            setInicio(false);
+        } else {
+            setError(true);
+            return;
+        }
+        
     }
 
     const handlerPresupuesto = (e) => {
         const numero = parseInt(e.target.value);
-        if (numero < 1) {
+        if (numero < 1 || isNaN(numero)) {
             setError(true);
             return;
         } else {
             setError(false);
-            setPresupuesto(parseInt(e.target.value))
+            setPresupuesto(parseInt(numero))
         }
     }
     return (
@@ -30,7 +37,7 @@ const Inicio = ({ setInicio, setPresupuesto }) => {
                     placeholder="Ingresa un Número con tu Teclado"
                     onChange={(e)=>handlerPresupuesto(e)}
                 />
-                <button className="alert button expanded" onClick={()=>handlerInicio()}>Aceptar</button>
+                <button className="alert button expanded" onClick={(e)=>handlerInicio(e)}>Aceptar</button>
             </form>
         </Fragment>
     )
