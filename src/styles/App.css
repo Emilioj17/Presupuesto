@@ -1,0 +1,40 @@
+.App {
+	display: grid;
+	grid-template-columns: 2fr 6fr 2fr;
+	grid-template-rows: 1fr 1fr 7fr 1fr;
+	grid-template-areas:
+		". . ."
+		"Cabeza Cabeza Cabeza"
+		". Cuerpo ."
+		"Pies Pies Pies";
+}
+
+.Cabeza {
+	grid-area: Cabeza;
+	text-align: center;
+}
+
+.Cuerpo {
+	grid-area: Cuerpo;
+}
+
+.Pies {
+	grid-area: Pies;
+}
+
+.Cuerpo2 {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: auto;
+	grid-template-areas: "Izquierda Derecha";
+	row-gap: 2vw;
+	column-gap: 1vw;
+}
+
+.Izquierda {
+	grid-area: Izquierda;
+}
+
+.Derecha {
+	grid-area: Derecha;
+}
