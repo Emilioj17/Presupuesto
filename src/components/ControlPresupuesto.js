@@ -1,13 +1,14 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+import {Helper} from "../helper"
 
 const ControlPresupuesto = ({ listaItems, presupuesto }) => {
     let suma = 0;
     listaItems.forEach(element => {
-        // console.log(element.cantidad);
         suma = suma + parseInt(element.cantidad);
     });
+    let montoFinal = presupuesto - suma;
     return (
-        <div>Te quedan ${presupuesto-suma}</div>
+        <div className={Helper(montoFinal, presupuesto)}>Te quedan ${montoFinal}</div>
     )
     
 }

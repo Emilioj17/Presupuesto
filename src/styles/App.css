@@ -20,6 +20,8 @@
 
 .Pies {
 	grid-area: Pies;
+	text-align: right;
+	padding-right: 1vh;
 }
 
 .Cuerpo2 {
@@ -55,5 +57,5 @@
 .CentralGasto {
 	grid-area: CentralGasto;
 	display: grid;
-	grid-template-columns: 2fr 1fr;
+	grid-template-columns: 2fr 1fr 1fr;
 }

@@ -11,6 +11,11 @@ function App() {
   const [qPresupuesto, setQPresupuesto] = useState("");
   const [listaItems, setListaItems] = useState([]);
 
+  const handlerReset = (e) => {
+    e.preventDefault();
+    window.location.reload(true);
+  }
+
   return (
     <div className="App">
       <div className="Cabeza"><h2>Calculadora de Presupuesto</h2></div>
@@ -37,7 +42,9 @@ function App() {
           )
         }
       </div>
-      <div className="Pies"></div>
+      <div className="Pies">
+      <button className="button small" onClick={(e)=>handlerReset(e)}>Reset</button>
+      </div>
     </div>
   );
 }

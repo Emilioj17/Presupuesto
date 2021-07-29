@@ -12,7 +12,7 @@ const Lista = ({ presupuesto, listaItems, setListaItems }) => {
                     Tu Presupuesto Total es de ${presupuesto}
                     <ControlPresupuesto listaItems={listaItems} presupuesto={presupuesto}/>
                 </div>
-                <Gasto listaItems={listaItems}/>
+                <Gasto listaItems={listaItems} setListaItems={setListaItems}/>
             </div>
         )
     }

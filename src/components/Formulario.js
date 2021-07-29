@@ -1,10 +1,9 @@
 import React, { Fragment, useState } from 'react';
 import Error from './Error';
+const { uuid } = require('uuidv4');
 
 const Formulario = ({nombreGasto, setNombreGasto, qPresupuesto, setQPresupuesto, listaItems, setListaItems }) => {
     const [error, setError] = useState(false);
-    
-
     const handlerNombreGasto = (e) => {
         const palabra = e.target.value;
         if (palabra.trim() === "") {
@@ -34,8 +33,9 @@ const Formulario = ({nombreGasto, setNombreGasto, qPresupuesto, setQPresupuesto,
 
     const handlerIngresar = (e) => {
         e.preventDefault();
+        let idx = String(uuid());
         if (nombreGasto && qPresupuesto) {
-            setListaItems([...listaItems, { "nombreGasto": nombreGasto, "cantidad": qPresupuesto }]);
+            setListaItems([...listaItems, { "id":idx, "nombreGasto": nombreGasto, "cantidad": qPresupuesto }]);
             setQPresupuesto("");
             setNombreGasto("");
         } else {
